@@ -1,0 +1,18 @@
+<h3>Your Stocks Listing</h3>
+<div class="container" style="background-color: #ededed">
+	<div class="row listing-row">
+	  <div class="col-sm-3"><b>Company name</b></div>
+	  <div class="col-sm-3"><b>Ticker symbol</b></div>
+	  <div class="col-sm-3"><b>Latest price</b></div>
+	</div>
+	<% stocks.each do |stock| %>
+		<div class="row listing-row">
+	    <div class="col-sm-3"><%= stock.name %></div>
+	    <div class="col-sm-3"><%= stock.ticker %></div>
+	    <div class="col-sm-3"><%= stock.last_price %></div>
+	    <% if user == current_user %>
+	    	<div class="col-sm-3"><%= link_to "Stop tracking this stock", user_stock_path(stock.id), method: :delete, remote: true, class: "btn btn-xs btn-danger"%></div>
+	    <% end %>
+		</div>
+	<% end %>
+</div>

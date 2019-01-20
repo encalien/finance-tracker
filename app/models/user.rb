@@ -3,4 +3,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :user_stocks
+  has_many :stocks, through: :user_stocks
+
+  
+
+  def max_stocks?
+    stocks.count >= 3
+  end
 end
