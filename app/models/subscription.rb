@@ -1,4 +1,4 @@
 class Subscription < ApplicationRecord
   belongs_to :user
-  belongs_to :folowee, :class_name => 'User'
+  belongs_to :followee, class_name: 'User'
 end

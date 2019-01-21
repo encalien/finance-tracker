@@ -13,14 +13,14 @@
     <div class="navbar-nav">
       <span class="navbar-text"><small>
         <%= "Signed in as #{current_user.full_name}" if current_user %></small></span>
-      <a class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          My profile
-        </a>
-        <% if current_user %>
+      <% if current_user %>
+      	<a class="nav-item dropdown">
+        	<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          My profile</a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
             <%= link_to "My Portfolio", my_portfolio_path, class: "dropdown-item" %>
             <%= link_to "Edit profile", edit_registration_path(current_user), class: "dropdown-item" %>
+            <%= link_to "My subscriptions", subscriptions_path, class: "dropdown-item" %>
             <div class="dropdown-divider"></div>
             <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>

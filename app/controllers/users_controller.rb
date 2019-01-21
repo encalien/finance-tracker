@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def my_portfolio
   end
 
-  def my_subscriptions
+  def show
+    @user = User.find(params[:id])
   end
 end
