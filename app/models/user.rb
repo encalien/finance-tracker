@@ -12,4 +12,9 @@ class User < ApplicationRecord
   def max_stocks?
     stocks.count >= 3
   end
+
+  def full_name
+    return "#{first_name} #{last_name}".strip if first_name || last_name
+    "Anonymous"
+  end
 end

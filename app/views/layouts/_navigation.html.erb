@@ -1,0 +1,33 @@
+<nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
+  <%= link_to "Stock Tracker", root_path, class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="navbar-nav mr-auto">
+      <%= link_to "My Portfolio", my_portfolio_path, class: "nav-link" %>
+      <a class="nav-item nav-link" href="#">Features</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+    </div>
+    <div class="navbar-nav">
+      <span class="navbar-text"><small>
+        <%= "Signed in as #{current_user.full_name}" if current_user %></small></span>
+      <a class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          My profile
+        </a>
+        <% if current_user %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to "My Portfolio", my_portfolio_path, class: "dropdown-item" %>
+            <%= link_to "Edit profile", edit_registration_path(current_user), class: "dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        <% else %>
+          <%= link_to "SIGN UP", new_user_registration_path, class: "btn btn-md btn-success" %>
+        <% end %>
+      </a>
+    </div>
+  </div>
+</nav>

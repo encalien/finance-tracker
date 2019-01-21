@@ -2,6 +2,14 @@
 	line-height: 2;
 }
 
+.btn.btn-xs {
+    padding: 0.15rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1;
+    border-radius: 0.2rem;
+}
+
 h3 {
 	line-height: 3;
 }
+

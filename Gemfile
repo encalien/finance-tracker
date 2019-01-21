@@ -10,9 +10,10 @@ end
 gem 'rails', '~> 5.1.6'
 gem 'hirb'
 gem 'jquery-rails'
-gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
+gem 'bootstrap', '~> 4.2.1'
 gem 'devise'
+gem 'font-awesome-sass'
 gem 'stock_quote', '~> 2.0.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
