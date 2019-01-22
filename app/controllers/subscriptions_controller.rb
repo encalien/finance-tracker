@@ -1,6 +1,17 @@
 class SubscriptionsController < ApplicationController
   def index; end
 
+  def create
+    followee = User.find(params[:user])
+    @subscription = Subscription.new(user: current_user, followee: followee)
+    if @subscription.save
+      flash[:success] = "Congratulations! You are now following user #{user.full_name}."
+    else
+      flash[:danger] = @subscription.errors.full_messages
+    end
+    redirect_to subscriptions_path
+  end
+
   def destroy
     @subscription = current_user.subscriptions.find(params[:id])
     @subscription.destroy

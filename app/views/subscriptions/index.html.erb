@@ -1,4 +1,18 @@
 <h1>My subscriptions</h1>
+
+<h3>Search for Users</h3>
+<div id="lookup">
+	<%= form_tag search_users_path, remote: true, method: :get, id: "users-lookup-form" do %>
+		<div id="users-lookup">
+			<%= render partial: "users/lookup" %>
+		</div>
+	<% end %>
+</div>
+
+<div id="results">
+	<%= render partial: "users/result" %>
+</div>
+
 <% if !current_user.subscriptions.empty? %>
 	<% current_user.subscriptions.each do |subscription| %>
 		<div class="row listing-row">

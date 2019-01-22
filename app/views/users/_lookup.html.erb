@@ -1,0 +1,10 @@
+<div class="form-group row no-padding text-center col-md-12">
+	<div class= "col-md-9" style="padding-right: 0">
+		<%= text_field_tag :search_param, params[:search_param], placeholder: "Enter your search parameters", autofocus: true, class: "form-control search-box input-lg" %>
+	</div>
+	<div class="col-md-3">
+		<%= button_tag(type: :submit, class: "btn btn-block btn-success") do %>
+				Search
+		<% end%>
+	</div>
+</div>
