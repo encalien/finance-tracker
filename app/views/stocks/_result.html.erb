@@ -1,13 +1,17 @@
-<% if @stock %>
-	<div class="card card-body results-block col-lg-6">
+<% if @stockquote_stock %>
+	<div class="card card-body results-block col-md-6">
 		<div class="row">
-			<div class="col-lg-9">
-				<strong>Symbol: </strong><%= @stock.ticker %>
-				<strong>Name: </strong><%= @stock.name %>
-				<strong>Price: </strong><%= @stock.last_price %>
+			<div class="col-md-9" style="font-size: 90%">
+				<strong>Symbol: </strong><%= @stockquote_stock.ticker %>
+				<strong>Name: </strong><%= @stockquote_stock.name %>
+				<strong>Price: </strong><%= @stockquote_stock.last_price %>
 			</div>
-			<div class="col-lg-3 no-padding">
-				<%= link_to "Add to my stocks", user_stocks_path(user: current_user, stock_ticker: @stock.ticker), class: "btn btn-xs btn-success", method: :post %>
+			<div class="col-md-3 no-padding">
+				<% if current_user.already_added?(@stockquote_stock) %>
+					<p class="small font-italic text-secondary" style="margin-top: 3px; margin-bottom: 0">Already added</p>
+				<% else %>
+					<%= link_to "Add to my stocks", user_stocks_path(user: current_user, stock_ticker: @stockquote_stock.ticker), class: "btn btn-xs btn-success", method: :post %>
+				<% end %>
 			</div>
 		</div>
 	</div>

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :user_stocks
   has_many :stocks, through: :user_stocks
   has_many :subscriptions
-  has_many :followees, through: :subscriptions, source: :user
+  has_many :followees, through: :subscriptions, source: :followee, class_name: 'User'
 
   def max_stocks?
     stocks.count >= 3
@@ -25,5 +25,13 @@ class User < ApplicationRecord
       .or(User.where('last_name LIKE ?', "%#{param}%"))
       .or(User.where('email LIKE ?', "%#{param}%"))
       .where.not(id: ignored_user.id)
+  end
+
+  def already_following?(user)
+    self.followees.find_by(id: user.id)
+  end
+
+  def already_added?(stock)
+    self.stocks.find_by(ticker: stock.ticker)
   end
 end

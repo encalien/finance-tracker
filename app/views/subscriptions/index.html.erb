@@ -14,17 +14,24 @@
 </div>
 
 <% if !current_user.subscriptions.empty? %>
+	<br>
+	<br>
+	<br>
+	<p class="lead">Here are the users you follow</p>
 	<% current_user.subscriptions.each do |subscription| %>
-		<div class="row listing-row">
-	    <div class="col-sm-3"><%= User.find(subscription.followee_id).full_name %></div>
-	    <div class="col-sm-3"><%= link_to "View profile", user_path(subscription.followee_id), class: "btn btn-xs btn-primary" %>
+		<div class="row listing-row col-md-6">
+	    <div class="col-md-8">
+	    	<strong><%= link_to User.find(subscription.followee_id).full_name, user_path(subscription.followee_id) %></strong>
 	    </div>
-	    <div class="col-sm-3"><%= link_to "Unfollow user", subscription_path(subscription), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %>
+	    <div class="col-sm-4"><%= link_to "Unfollow user", subscription_path(subscription), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-xs btn-danger" %>
 	    </div>
 		</div>
 	<% end %>
 <% else %>
 	<div class="row col-md-12">
-		<p class="lead">You don't follow anyone yet.</p>
+		<br>
+		<br>
+		<br>
+		<p class="lead">You don't follow anyone yet!</p>
 	</div>
 <% end %>

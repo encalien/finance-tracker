@@ -2,10 +2,10 @@ class SubscriptionsController < ApplicationController
   def index; end
 
   def create
-    followee = User.find(params[:user])
+    followee = User.find(params[:followee])
     @subscription = Subscription.new(user: current_user, followee: followee)
     if @subscription.save
-      flash[:success] = "Congratulations! You are now following user #{user.full_name}."
+      flash[:success] = "Congratulations! You are now following user #{followee.full_name}."
     else
       flash[:danger] = @subscription.errors.full_messages
     end

@@ -1,12 +1,16 @@
 <% unless @users.blank? %>
-	<div class="card card-body results-block col-lg-6">
+	<div class="card card-body results-block col-md-6">
 		<% @users.each do |user| %>
-			<div class="row">
-				<div class="col-lg-9">
+			<div class="row" style="line-height: 2">
+				<div class="col-md-9">
 					<strong><%= link_to user.full_name, user_path(user) %></strong>
 				</div>
-				<div class="col-lg-3 no-padding">
-					<%= link_to "Follow user", subscriptions_path, class: "btn btn-xs btn-success", method: :post %>
+				<div class="col-md-3 no-padding">
+					<% if current_user.already_following?(user) %>
+						<p class="small font-italic text-secondary" style="margin-top: 4px; margin-bottom: 0">Already following</p>
+					<% else %>
+						<%= link_to "Follow user", subscriptions_path(user: current_user, followee: user), class: "btn btn-xs btn-success", method: :post %>
+					<% end %>
 				</div>
 			</div>
 		<% end %>
